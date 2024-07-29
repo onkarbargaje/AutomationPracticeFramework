@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="com.qa.ae.listeners.ExtendReportListener" />
+		<listener class-name="com.qa.ae.listeners.AnnotationTransformer" />
+		
+			<!--<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
+		 <listener class-name="com.qa.opencart.listeners.AnnotationTransformer" 
+			/> -->
+	</listeners>
+	<test name="Regression_Test">
+		<groups>
+			<run>
+				<include name="regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.qa.ae.test.LoginPageTest" />
+			<class name="com.qa.ae.test.HomePageTest" />
+			<class name="com.qa.ae.test.ProductsPageTest" />
+			<class name="com.qa.ae.test.CartPageTest" />
+			<class name="com.qa.ae.test.CheckoutPageTest" />
+			<class name="com.qa.ae.test.PaymentPageTest" />
+			<class name="com.qa.ae.test.OrderConfirmationTest" />
+
+
+			<!-- <class name="com.qa.ae.test.SignupPageTest"/-->
+
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->
