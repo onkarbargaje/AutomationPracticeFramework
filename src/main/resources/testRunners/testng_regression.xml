@@ -17,7 +17,7 @@
 		</groups>
 		<classes>
 			<class name="com.qa.ae.test.LoginPageTest" />
-			<class name="com.qa.ae.test.HomePageTest" />
+		<class name="com.qa.ae.test.HomePageTest" />
 			<class name="com.qa.ae.test.ProductsPageTest" />
 			<class name="com.qa.ae.test.CartPageTest" />
 			<class name="com.qa.ae.test.CheckoutPageTest" />
