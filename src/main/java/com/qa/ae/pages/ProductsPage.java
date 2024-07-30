@@ -30,6 +30,7 @@ public class ProductsPage {
 	private By product_details=By.xpath("//div[@class='product-information']//p");
 	private By product_price=By.xpath("(//div[@class='product-information']//span)[2]");
 	private By product_header=By.xpath("(//div[@class='product-information']//h2)");
+	private By product_quantity_tf=By.xpath("//input[@type='number']");
 	
 	
 
@@ -81,8 +82,9 @@ public class ProductsPage {
 		//actutils.doSendKeys(searchProduct_tf, "t shirt");
 		actutils.doClick(viewProduct_link, 2);
 		actutils.doClick(addToCart_bt);
-		actutils.doClick(viewCart_lk, 2);
-		return new CartPage(driver);
+		//actutils.doClick(viewCart_lk, 2);
+		//return new CartPage(driver);
+		return clickOnViewCartLink();
 	}
 	public void clickOnViewProductLink()
 	{
@@ -138,6 +140,23 @@ public class ProductsPage {
 		String productHeaderName =actutils.getElement(product_header).getText();
 		System.out.println("product name is "+productHeaderName );
 		return productHeaderName;
+	}
+	
+	public void enterProductQuantity(int qty)
+	{
+		//actutils.doSendKeys(product_quantity_tf, String.valueOf(qty));
+		actutils.doSendKeys(product_quantity_tf, String.valueOf(qty), 2);
+	}
+	
+	public void clickOnAddToCartButton()
+	{
+		actutils.doClick(addToCart_bt, 2);
+	}
+	
+	public CartPage clickOnViewCartLink()
+	{
+		actutils.doClick(viewCart_lk,2);
+		return new CartPage(driver);
 	}
 
 }

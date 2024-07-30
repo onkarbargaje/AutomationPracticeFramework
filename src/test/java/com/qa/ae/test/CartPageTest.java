@@ -25,5 +25,19 @@ public class CartPageTest extends BaseTest
 		String actCheckoutPageTitle=checkoutpage.getCheckoutPageTitle();
 		Assert.assertEquals(actCheckoutPageTitle, "Automation Exercise - Checkout");
 	}
+	//Test Case 13: Verify Product quantity in Cart
+	@Test (groups = {"smoke", "sanity","regression"})
+	public void productQuantityInCartTest()
+	{
+		homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		productspage=homepage.doClickOnProductsLink();
+		productspage.clickOnViewProductLink();
+		productspage.enterProductQuantity(4);
+		productspage.clickOnAddToCartButton();
+		cartpage=productspage.clickOnViewCartLink();
+		String actProductQty=cartpage.getFirstProductQuantity();
+		System.out.println(actProductQty);
+		Assert.assertEquals(actProductQty, "4");
+	}
 
 }

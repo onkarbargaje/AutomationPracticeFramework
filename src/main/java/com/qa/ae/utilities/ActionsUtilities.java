@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -159,5 +160,14 @@ public class ActionsUtilities {
 		
 		//return Arrays.asList(attributeList);
 		return attributeList;
+	}
+	/**
+	 * added when working on feature branch
+	 */
+	
+	public void scrollByVisibilityOfElement( By locator)
+	{
+		JavascriptExecutor js=  (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", getElement(locator));
 	}
 }

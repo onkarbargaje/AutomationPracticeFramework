@@ -25,5 +25,25 @@ public class HomePageTest extends BaseTest {
         String actualHomePageTitle = homepage.getHomePageTitle();
 		Assert.assertEquals(actualHomePageTitle, "Automation Exercise");
 	}
-
+	
+	/**
+	 * added on feature branch
+	 */
+	@Test(priority = 3,groups = {"smoke", "sanity","regression"})
+   public void verifyFooterTextTest()
+   {
+	   homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+	  String actFooterText= homepage.getFooterText();
+	  Assert.assertEquals(actFooterText, "SUBSCRIPTION");
+   }
+	//Test Case 10: Verify Subscription in home page
+	@Test(priority = 4,groups = {"smoke", "sanity","regression"})
+	public void verifySubscriptionAlertMessageTest()
+	{
+		homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		homepage.enterEmailInFooterTextBox();
+		homepage.clickOnFooterTextBoxArrow();
+		String actAlertMsg=homepage.getSubscriptionAlertMessage();
+		Assert.assertEquals(actAlertMsg, "You have been successfully subscribed!");
+	}
 }
