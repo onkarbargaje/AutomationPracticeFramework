@@ -30,10 +30,10 @@ public class DriverFactory {
 			//driver = new ChromeDriver();
 			tlDriver.set(new ChromeDriver()); //for thread safe in parallel execution
 
-		} else if (browserName.trim().equalsIgnoreCase("firefox")) {
+		} else if (browserName.trim().equalsIgnoreCase("edge")) {
 			//driver = new FirefoxDriver();
 			tlDriver.set(new FirefoxDriver());
-		} else if (browserName.equalsIgnoreCase("edge")) {
+		} else if (browserName.equalsIgnoreCase("firefox")) {
 			//driver = new EdgeDriver();
 			tlDriver.set(new EdgeDriver());
 		} else {

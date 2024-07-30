@@ -1,7 +1,9 @@
 package com.qa.ae.test;
 
+import java.util.Arrays;
+import java.util.Map;
+
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.qa.ae.base.BaseTest;
@@ -66,5 +68,43 @@ public class ProductsPageTest extends BaseTest
 		String actCartPageTitle=cartpage.getCartPageTitle();
 		Assert.assertEquals(actCartPageTitle, "Automation Exercise - Checkout");
 	}
-
+	
+	/**
+	 * test cases added after commiting to master branch and working on workingOnkar branch
+	 * 
+	 * 
+	 */
+     @Test
+	public void verifyProductsPageTitleTest()
+	{
+		homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+		productspage=homepage.doClickOnProductsLink();
+		String actTitle=productspage.getProductsPageTitle();
+		Assert.assertEquals(actTitle, "Automation Exercise - All Products");
+	}
+     @Test
+     public void getProductDetailsTest()
+     {
+    	 homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+ 		productspage=homepage.doClickOnProductsLink();
+ 		productspage.clickOnViewProductLink();
+ 		Map<String, String> actProductDetails=productspage.getProductDetails();
+ 		 // Using entrySet() to print key-value pairs
+//        for (Map.Entry<String, String> entry : actProductDetails.entrySet()) {
+//            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+//        }
+ 		
+ 		softassert.assertEquals(actProductDetails.get("Availability"), "In Stock");
+ 		softassert.assertEquals(actProductDetails.get("Condition"), "New");
+ 		softassert.assertEquals(actProductDetails.get("Category"), "Women > Tops");
+ 		softassert.assertAll();
+     }
+//     @Test
+//     public void getProductPriceTest()
+//     {
+//    	 homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+//  		productspage=homepage.doClickOnProductsLink();
+//  		productspage.clickOnViewProductLink();
+//  	
+//     }
 }

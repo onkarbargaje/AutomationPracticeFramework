@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import com.qa.ae.factory.DriverFactory;
 import com.qa.ae.pages.CartPage;
@@ -19,6 +20,7 @@ import com.qa.ae.pages.SignupPage;
 public class BaseTest {
 	DriverFactory df;
 	WebDriver driver;
+	protected SoftAssert softassert;
     protected Properties prop;
 	protected SignupPage signuppage; //only child class will access either in same or different package
     protected HomePage homepage;
@@ -40,6 +42,7 @@ public class BaseTest {
 		signuppage=new SignupPage(driver); //when we create object of Signup page then SignupPage constructor will be
 		//called by default and it is waiting for driver and we are passing 18 number driver to this
 	    loginpage=new LoginPage(driver);
+	    softassert= new SoftAssert();
 	}
 	
 	
