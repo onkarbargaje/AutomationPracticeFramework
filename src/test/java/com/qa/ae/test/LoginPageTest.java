@@ -11,7 +11,7 @@ public class LoginPageTest extends BaseTest {
 		homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 		
 		Assert.assertTrue(homepage.isLogoutLinkDisplayed());
-		//Thread.sleep(5000);
+		
 	}
 
 }

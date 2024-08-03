@@ -10,6 +10,7 @@ import org.testng.asserts.SoftAssert;
 import com.qa.ae.factory.DriverFactory;
 import com.qa.ae.pages.CartPage;
 import com.qa.ae.pages.CheckoutPage;
+import com.qa.ae.pages.ContactUsPage;
 import com.qa.ae.pages.HomePage;
 import com.qa.ae.pages.LoginPage;
 import com.qa.ae.pages.OrderConfirmationPage;
@@ -24,6 +25,7 @@ public class BaseTest {
     protected Properties prop;
 	protected SignupPage signuppage; //only child class will access either in same or different package
     protected HomePage homepage;
+    protected ContactUsPage contactuspage;
     protected LoginPage loginpage;
     protected ProductsPage productspage;
     protected CartPage cartpage;
@@ -32,6 +34,7 @@ public class BaseTest {
     protected OrderConfirmationPage orderconfirmationpage;
 	//@BeforeTest
     //@BeforeSuite
+    
 	@BeforeMethod(groups = {"smoke", "sanity","regression"})
 	public void setUp() {
 		df = new DriverFactory();
@@ -49,6 +52,7 @@ public class BaseTest {
 	
    //@AfterTest
     //@AfterSuite
+	
    @AfterMethod(groups = {"smoke", "sanity","regression"})
     public void tearDown()
     {

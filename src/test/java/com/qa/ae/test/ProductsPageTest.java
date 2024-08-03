@@ -74,7 +74,7 @@ public class ProductsPageTest extends BaseTest
 	 * 
 	 * 
 	 */
-     @Test
+     @Test(priority = 7,groups = {"smoke", "sanity","regression"})
 	public void verifyProductsPageTitleTest()
 	{
 		homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
@@ -82,7 +82,7 @@ public class ProductsPageTest extends BaseTest
 		String actTitle=productspage.getProductsPageTitle();
 		Assert.assertEquals(actTitle, "Automation Exercise - All Products");
 	}
-     @Test
+     @Test (priority = 8,groups = {"smoke", "regression"})
      public void getProductDetailsTest()
      {
     	 homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));

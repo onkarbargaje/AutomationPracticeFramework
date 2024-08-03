@@ -2,15 +2,19 @@ package com.qa.ae.utilities;
 
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ActionsUtilities {
@@ -169,5 +173,63 @@ public class ActionsUtilities {
 	{
 		JavascriptExecutor js=  (JavascriptExecutor)driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", getElement(locator));
+	}
+	
+	/**
+	 * below utility for alert
+	 * @return 
+	 */
+	
+	public Alert waitForJSAlert(int timeOut)
+	{
+		WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		 return wait.until(ExpectedConditions.alertIsPresent());
+	}
+	
+	public Alert waitForJSAlert(int timeOut, int intervalTime) {
+
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.pollingEvery(Duration.ofSeconds(intervalTime)).ignoring(NoAlertPresentException.class)
+				.withMessage("===alert is not found===");
+		return wait.until(ExpectedConditions.alertIsPresent());
+	}
+	
+	public String getAlertText(int timeOut)
+	{
+		Alert alert=waitForJSAlert(timeOut);
+		String alertText=alert.getText();
+		return alertText;
+	}
+	
+	public void acceptTheAlert(int timeOut)
+	{
+		Alert alert=waitForJSAlert(timeOut);
+		alert.accept();
+	}
+	
+	public void dismissTheAlert(int timeOut)
+	{
+		Alert alert=waitForJSAlert(timeOut);
+		alert.dismiss();
+	}
+	
+	////++++++Select class dropdown utils++++
+	
+	public void selectValueByIndex(By locator, int index)
+	{
+		Select select=new Select(getElement(locator));
+		select.selectByIndex(index);
+	}
+	
+	public void selectValueByVisibleText(By locator, String visibleText)
+	{
+		Select select=new Select(getElement(locator));
+		select.selectByVisibleText(visibleText);
+	}
+	
+	public void selectByValue(By locator, String value)
+	{
+		Select select=new Select(getElement(locator));
+		select.selectByValue(value);
 	}
 }

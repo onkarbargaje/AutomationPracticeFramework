@@ -12,6 +12,7 @@ public class CartPage
 	
 	private By proceed_to_checkout_bt= By.linkText("Proceed To Checkout");
 	private By first_product_qty=By.xpath("(//div[@id='cart_info']//td[@class='cart_quantity'])[1]");
+	private By register_login_lk= By.linkText("Register / Login");
 	
 	public CartPage(WebDriver driver)
 	{
@@ -36,5 +37,10 @@ public class CartPage
 		return actutils.getText(first_product_qty, 4);
 	}
 	
-
+    public LoginPage navigateToRegisterLoginLinkAfterClickOnProceedToCheckoutBtn()
+    {
+    	actutils.doClick(proceed_to_checkout_bt, 2);
+    	actutils.doClick(register_login_lk, 2);
+    	return new LoginPage(driver);
+    }
 }

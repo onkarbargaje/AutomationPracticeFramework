@@ -18,6 +18,9 @@ public class HomePage
 	private By footer_subscription_tf=By.id("susbscribe_email");
 	private By footer_subscription_btn=By.xpath("//button[@type='submit']");
 	private By alert_success_msg=By.xpath("//div[text()='You have been successfully subscribed!']");
+	private By addToCart_bt=By.xpath("(//a[text()='Add to cart'])[1]");
+	private By viewCart_lk=By.xpath("//u[text()='View Cart']");
+	private By cart_lk=By.xpath("//a[text()=' Cart']");
 	
 	public HomePage(WebDriver driver)
 	{
@@ -74,6 +77,20 @@ public class HomePage
 		String actAlertMsg=actutils.getText(alert_success_msg, 2);
 		return actAlertMsg;
 	}
+	public void clickOnAddToCartlk()
+	{
+		actutils.doClick(addToCart_bt, 2);
+	}
+	public CartPage clickOnViewCartLink()
+	{
+		actutils.doClick(viewCart_lk, 2);
+		return new CartPage(driver);
+	}
 	
+	public CartPage clickOnCartlk()
+	{
+		actutils.doClick(cart_lk);
+		return new CartPage(driver);
+	}
 
 }
