@@ -13,6 +13,8 @@ public class CartPage
 	private By proceed_to_checkout_bt= By.linkText("Proceed To Checkout");
 	private By first_product_qty=By.xpath("(//div[@id='cart_info']//td[@class='cart_quantity'])[1]");
 	private By register_login_lk= By.linkText("Register / Login");
+	private By cart_qty_delete_btn=By.xpath("//a[@class='cart_quantity_delete']");
+	private By empty_cart_msg=By.xpath("//b[text()='Cart is empty!']");
 	
 	public CartPage(WebDriver driver)
 	{
@@ -42,5 +44,13 @@ public class CartPage
     	actutils.doClick(proceed_to_checkout_bt, 2);
     	actutils.doClick(register_login_lk, 2);
     	return new LoginPage(driver);
+    }
+    
+    public String clickOnCartQtyDeleteBtn()
+    {
+    	actutils.doClick(cart_qty_delete_btn);
+    	String empty_cart_ms=actutils.getText(empty_cart_msg, 2);
+    	System.out.println(empty_cart_ms);
+    	return empty_cart_ms;
     }
 }

@@ -232,4 +232,36 @@ public class ActionsUtilities {
 		Select select=new Select(getElement(locator));
 		select.selectByValue(value);
 	}
+	
+	public List<String> getTextOfListOfElements(By locator)
+	{
+		List<WebElement> list=getElements(locator);
+		
+		List<String> ListText= new ArrayList<String>();
+		for(WebElement e:list)
+		{
+			String Option=e.getText();
+			ListText.add(Option);
+		}
+		//System.out.println(ListText);
+		return ListText;
+	}
+	
+	public void clickOfParticularElementFromListOfOptions(By locator,String desiredOption)
+	{
+        List<WebElement> list=getElements(locator);
+		
+		//List<String> ListText= new ArrayList<String>();
+		for(WebElement e:list)
+		{
+			String Option=e.getText();
+			if(Option.equals(desiredOption))
+			{
+				e.click();
+				System.out.println(desiredOption +" Option is Clicked");
+				break;
+			}
+		}
+		
+	}
 }

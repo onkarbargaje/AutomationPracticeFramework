@@ -1,12 +1,13 @@
 package com.qa.ae.test;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.qa.ae.base.BaseTest;
+import com.qa.ae.constants.AppConstants;
 
 public class ProductsPageTest extends BaseTest
 {
@@ -107,4 +108,18 @@ public class ProductsPageTest extends BaseTest
 //  		productspage.clickOnViewProductLink();
 //  	
 //     }
+     //Test Case 18: View Category Products similar to this test case
+     @Test (priority = 9,groups = {"smoke", "regression"})
+     public void verifyProductSubCategoryTest()
+     {
+    	 homepage= loginpage.navigateToHomePage();
+    	 List<String> cat_list=homepage.getProductCategoryList();
+    	 System.out.println(cat_list);
+    	 softassert.assertEquals(cat_list, AppConstants.PRODUCTS_CATEGORY_LIST);
+    	 homepage.clickOnOptionOfCategory("Women");
+    	productspage= homepage.clickOnSubOptionOfCategory("Women", "Saree");
+    	String actTitle=productspage.getProductsPageTitle();
+    	System.out.println(actTitle);
+    	 Assert.assertTrue(actTitle.contains("Saree"));
+     }
 }

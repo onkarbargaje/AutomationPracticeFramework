@@ -15,7 +15,7 @@ public class CartPageTest extends BaseTest
 //		productspage=homepage.doClickOnProductsLink();
 //	}
 	
-	@Test (groups = {"smoke", "sanity","regression"})
+	@Test (priority = 2, groups= {"smoke", "sanity","regression"})
 	public void navigateToCheckoutPageTest()
 	{
 		homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
@@ -26,7 +26,7 @@ public class CartPageTest extends BaseTest
 		Assert.assertEquals(actCheckoutPageTitle, "Automation Exercise - Checkout");
 	}
 	//Test Case 13: Verify Product quantity in Cart
-	@Test (groups = {"smoke", "sanity","regression"})
+	@Test (priority = 1,groups = {"smoke", "sanity","regression"})
 	public void productQuantityInCartTest()
 	{
 		homepage = loginpage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
@@ -38,6 +38,17 @@ public class CartPageTest extends BaseTest
 		String actProductQty=cartpage.getFirstProductQuantity();
 		System.out.println(actProductQty);
 		Assert.assertEquals(actProductQty, "4");
+	}
+	
+	//Test Case 17: Remove Products From Cart
+	@Test (priority = 3 ,groups = {"smoke", "sanity","regression"})
+	public void removeProductsFromCartTest()
+	{
+		homepage= loginpage.navigateToHomePage();
+		homepage.clickOnAddToCartlk();
+		cartpage=homepage.clickOnViewCartLink();
+		String actMsg=cartpage.clickOnCartQtyDeleteBtn();
+		Assert.assertEquals(actMsg, "Cart is empty!");
 	}
 
 }
