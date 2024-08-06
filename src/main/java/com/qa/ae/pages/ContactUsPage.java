@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.ae.utilities.ActionsUtilities;
+import com.qa.ae.utilities.CommonActions;
 
 public class ContactUsPage 
 {
 	private WebDriver driver;
 	protected ActionsUtilities actutils;
+	protected CommonActions commonactions;
 	
 	private By name_tf=By.xpath("//input[@name='name']");
 	private By email_tf=By.xpath("//input[@name='email']");
@@ -23,6 +25,7 @@ public class ContactUsPage
 	{
 		this.driver=driver;
 		actutils=new ActionsUtilities (driver);
+		commonactions=new CommonActions(driver);
 	}
 	
 	public void fillContactUsForm(String name, String email, String subject, String message )

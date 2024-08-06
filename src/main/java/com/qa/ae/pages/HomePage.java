@@ -7,11 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.qa.ae.utilities.ActionsUtilities;
+import com.qa.ae.utilities.CommonActions;
 
 public class HomePage 
 {
 	protected WebDriver driver;
 	protected ActionsUtilities actutils;
+	protected CommonActions commonactions;
 	
 	//protected By logout_lk=By.linkText(" Logout");
 	private By logout_lk=By.xpath("(//div[@class='shop-menu pull-right']//li)[4]/a");
@@ -30,7 +32,7 @@ public class HomePage
 	{
 		this.driver=driver;
 		actutils=new ActionsUtilities(driver);
-		
+		commonactions=new CommonActions(driver);
 	}
 	
 	public String getHomePageTitle()
@@ -48,9 +50,9 @@ public class HomePage
 	
 	public ProductsPage  doClickOnProductsLink()
 	{
-		actutils.waitForVisibilityOfElement(products_lk, 5).click();
+		//actutils.waitForVisibilityOfElement(products_lk, 5).click();
 		//actutils.doClick(products_lk, 5);
-		
+		commonactions.clickOnProductsPageLink();
 		return new ProductsPage(driver);
 	}
 	
@@ -93,8 +95,9 @@ public class HomePage
 	
 	public CartPage clickOnCartlk()
 	{
-		actutils.doClick(cart_lk);
-		return new CartPage(driver);
+		//actutils.doClick(cart_lk);
+		//return new CartPage(driver);
+		return commonactions.clickOnCartPageLink();
 	}
 	
 	public List<String> getProductCategoryList()

@@ -10,11 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.qa.ae.utilities.ActionsUtilities;
+import com.qa.ae.utilities.CommonActions;
 
 public class ProductsPage {
 	
 	protected WebDriver driver;
 	protected ActionsUtilities actutils;
+	protected CommonActions commonactions;
 	
 	private Map<String, String> productInfoMap = new HashMap<String, String>();
 	private By searchProduct_tf=By.id("search_product");
@@ -38,6 +40,7 @@ public class ProductsPage {
 	{
 		this.driver=driver;
 		actutils= new ActionsUtilities (driver);
+		commonactions=new CommonActions(driver);
 	}
 	
 	
@@ -49,13 +52,24 @@ public class ProductsPage {
 	
 	public void searchEnteredProductName()
 	{
-		actutils.doSendKeys(searchProduct_tf, "top");
+		actutils.doSendKeys(searchProduct_tf, "jeans");
 		actutils.doClick(addToCart_bt);	
 	}
 	
 	public boolean isProductAvailable()
 	{
-		return actutils.isElementIsDisplayed(searchResult_img, 2);
+		 boolean flag=actutils.isElementIsDisplayed(searchResult_img, 2);
+		 
+//		 if(flag)
+//		 {
+//			 System.out.println("Entered product is available......");
+//		 }
+//		 else
+//		 {
+//			 throw new RuntimeException("Entered product is not available..........");
+//		 }
+		return flag;
+		
 	}
 	
 	public void viewProductDetails()

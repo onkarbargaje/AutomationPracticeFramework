@@ -50,5 +50,24 @@ public class CartPageTest extends BaseTest
 		String actMsg=cartpage.clickOnCartQtyDeleteBtn();
 		Assert.assertEquals(actMsg, "Cart is empty!");
 	}
+	
+	//Test Case 20: Search Products and Verify Cart After Login
+	@Test (priority = 4 ,groups = {"smoke", "sanity","regression"})
+	public void verifyLoginAfterAddingProductToCartTest()
+	{
+		productspage=loginpage.navigateToProductsPage();
+		productspage.searchEnteredProductName();
+		productspage.isProductAvailable();
+		productspage.productAddToCart();
+		cartpage=productspage.clickOnViewCartLink();
+		loginpage=cartpage.clickOnSignupLogin_lk();
+		loginpage.doLogin("bargajeonkar99@gmail.com", "Automation@1234");
+		cartpage=loginpage.navigateToCartPage();
+		cartpage.isProductAvailableInCart();
+		Assert.assertTrue(cartpage.isProductAvailableInCart());
+		
+		
+		
+	}
 
 }

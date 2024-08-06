@@ -4,17 +4,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.ae.utilities.ActionsUtilities;
+import com.qa.ae.utilities.CommonActions;
 
 public class LoginPage {
 	
 private WebDriver driver;
 protected ActionsUtilities actutils;
+protected CommonActions commonactions;
 	
 	private By email_tf= By.xpath("//input[@data-qa='login-email']");
 	private By password_tf= By.xpath("//input[@data-qa='login-password']");
 	private By login_bt= By.xpath("//button[@data-qa='login-button']");
-	private By contactUs_lk=By.xpath("//a[text()=' Contact us']");
-	private By home_lk=By.xpath("//a[text()=' Home']");
+	//private By contactUs_lk=By.xpath("//a[text()=' Contact us']");
+	//private By home_lk=By.xpath("//a[text()=' Home']");
+	private By products_lk=By.xpath("//a[text()=' Products']");
+	private By carts_lk=By.xpath("//a[text()=' Cart']");
 	
 	//for signup
 	private By name_tf= By.xpath("//input[@placeholder='Name']");
@@ -25,6 +29,7 @@ protected ActionsUtilities actutils;
 	{
 		this.driver=driver;
 		actutils=new ActionsUtilities (driver);
+		commonactions=new CommonActions(driver);
 	}
 	
 //	public HomePage doLogin(String username, String password)
@@ -38,14 +43,16 @@ protected ActionsUtilities actutils;
 	// added on feature branch
     public ContactUsPage navigateToContactUsForm()
     {
-    	actutils.doClick(contactUs_lk);
-    	return new ContactUsPage(driver);
+//    	actutils.doClick(contactUs_lk);
+//    	return new ContactUsPage(driver);
+    	return commonactions.clickOnContactUsLink();
     }
     
     public HomePage navigateToHomePage()
     {
-    	actutils.doClick(home_lk);
-    	return new HomePage(driver);
+//    	actutils.doClick(home_lk);
+//    	return new HomePage(driver);
+    	return commonactions.clickOnHomePageLink();
     }
     
     public HomePage doLogin(String username, String password)
@@ -62,5 +69,18 @@ protected ActionsUtilities actutils;
 		driver.findElement(signup_email_tf).sendKeys(email);
 		driver.findElement(signup_bt).click();
 		return new SignupPage(driver);
+    }
+    
+    public ProductsPage navigateToProductsPage()
+    {
+//    	actutils.doClick(products_lk);
+//    	return new ProductsPage(driver);
+    	return commonactions.clickOnProductsPageLink();
+    }
+    public CartPage navigateToCartPage()
+    {
+//    	actutils.doClick(carts_lk);
+//    	return new CartPage(driver);
+    	return commonactions.clickOnCartPageLink();
     }
 }

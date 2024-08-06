@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.ae.utilities.ActionsUtilities;
+import com.qa.ae.utilities.CommonActions;
 
 public class OrderConfirmationPage  {
 	
 	protected WebDriver driver;
 	protected ActionsUtilities actutils;
+	protected CommonActions commonactions;
 	
 	private By orderConfirmSuccess_Message=By.xpath("//p[text()='Congratulations! Your order has been confirmed!']");
     private By delete_account_lk=By.xpath("//a[text()=' Delete Account']");
@@ -20,6 +22,7 @@ public class OrderConfirmationPage  {
 	{
 		this.driver=driver;
 		actutils= new ActionsUtilities (driver);
+		commonactions=new CommonActions(driver);
 	}
 	
 	public String getOrderConfirmationMessage()
@@ -31,7 +34,8 @@ public class OrderConfirmationPage  {
 	public void clickOnDeleteAccountLk()
 	{
 		System.out.println(getOrderConfirmationMessage());
-		actutils.doClick(delete_account_lk, 2);
+		//actutils.doClick(delete_account_lk, 2);
+		commonactions.clickOnDeleteAccountLink();
 	}
 	public void getDeleteAccountMessage()
 	{

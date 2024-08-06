@@ -6,10 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.ae.utilities.ActionsUtilities;
+import com.qa.ae.utilities.CommonActions;
 
 public class PaymentPage {
 	protected WebDriver driver;
 	protected ActionsUtilities actutils;
+	protected CommonActions commonactions;
 	
 	//private By cardHolderName_tf=By.name("name_on_card");
 	private By cardHolderName_tf=By.xpath("//input[@name='name_on_card']");
@@ -28,6 +30,7 @@ public class PaymentPage {
 		
 		this.driver=driver;
 		actutils= new ActionsUtilities (driver);
+		commonactions=new CommonActions(driver);
 	}
 	
 	public String getCheckoutPageUrl()

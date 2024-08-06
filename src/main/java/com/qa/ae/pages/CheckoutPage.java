@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.qa.ae.utilities.ActionsUtilities;
+import com.qa.ae.utilities.CommonActions;
 
 public class CheckoutPage
 {
 	protected WebDriver driver;
 	protected ActionsUtilities actutils;
+	protected CommonActions commonactions;
 	
 	private By placeOrder_bt= By.linkText("Place Order");
 	
@@ -16,6 +18,7 @@ public class CheckoutPage
 	{
 		this.driver=driver;
 		actutils= new ActionsUtilities (driver);
+		commonactions=new CommonActions(driver);
 	}
 	
 	public String getCheckoutPageUrl()
